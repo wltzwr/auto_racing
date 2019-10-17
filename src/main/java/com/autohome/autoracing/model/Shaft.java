@@ -1,11 +1,9 @@
-package com.autohome.autoracing.pojo;
+package com.autohome.autoracing.model;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.math.BigDecimal;
 
-@TableName("shaft")
 @Data
 public class Shaft {
 

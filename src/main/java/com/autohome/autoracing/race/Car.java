@@ -1,6 +1,6 @@
 package com.autohome.autoracing.race;
 
-import com.autohome.autoracing.pojo.*;
+import com.autohome.autoracing.model.*;
 
 import java.math.BigDecimal;
 import java.util.concurrent.TimeUnit;

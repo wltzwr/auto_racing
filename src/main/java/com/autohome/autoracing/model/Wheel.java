@@ -1,11 +1,9 @@
-package com.autohome.autoracing.pojo;
+package com.autohome.autoracing.model;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.math.BigDecimal;
 
-@TableName("wheel")
 @Data
 public class Wheel {
     private Integer id;
