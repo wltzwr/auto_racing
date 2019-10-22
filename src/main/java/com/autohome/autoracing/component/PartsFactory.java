@@ -16,14 +16,18 @@ public class PartsFactory implements ResourceLoaderAware {
     private JSONObject partsJson;
 
     public JSONObject getAllParts(){
-        return partsJson;
+        return new JSONObject(partsJson);
     }
 
     public Object getPart(String type, Integer id){
         JSONArray array = partsJson.getJSONArray(type);
-        JSONObject obj = array.getJSONObject(id);
-
-        return partsJson.getJSONArray(type).getJSONObject(id);
+        for (int i = 0; i < array.size(); i++) {
+            JSONObject part = array.getJSONObject(i);
+            if (part.getInteger("id").equals(id)){
+                return part;
+            }
+        }
+        return null;
     }
 
 
@@ -37,6 +41,7 @@ public class PartsFactory implements ResourceLoaderAware {
                     , Feature.AllowSingleQuotes
                     , Feature.UseBigDecimal);
         } catch (IOException e) {
+            // ignore
         }
     }
 }
