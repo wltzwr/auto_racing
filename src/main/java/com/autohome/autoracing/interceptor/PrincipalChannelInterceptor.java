@@ -1,7 +1,6 @@
-package com.autohome.autoracing.beans;
+package com.autohome.autoracing.interceptor;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.autohome.autoracing.context.UserContext;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.simp.stomp.StompCommand;
@@ -15,16 +14,16 @@ import java.security.Principal;
 public class PrincipalChannelInterceptor implements ChannelInterceptor {
 
     // 身份标识 header key
-    private static final String PRINCIPAL = "principal";
+    private static final String USERNAME = "principal";
 
     @Override
     public Message<?> preSend(Message<?> message, MessageChannel channel) {
         StompHeaderAccessor headerAccessor = MessageHeaderAccessor.getAccessor(message, StompHeaderAccessor.class);
         if (isFirstConnection(headerAccessor)){
-            String principal = headerAccessor.getFirstNativeHeader(PRINCIPAL);
-            Principal user = () -> principal;
+            String username = headerAccessor.getFirstNativeHeader(USERNAME);
+            Principal user = () -> username;
             headerAccessor.setUser(user);
-            headerAccessor.setHeader("sessionId", headerAccessor.getSessionId());
+            UserContext.setUserContext(username, "socketSessionId", headerAccessor.getSessionId());
         }
         return message;
     }

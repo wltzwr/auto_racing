@@ -1,10 +1,11 @@
 package com.autohome.autoracing.race;
 
 import com.autohome.autoracing.model.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.concurrent.TimeUnit;
-
+@Data
 public class Car {
 
     //         basepower X
@@ -24,6 +25,9 @@ public class Car {
 
 
     private boolean available = false;
+    private boolean complete = false;
+
+
     private Bodywork bodywork;
     private Engine engine;
     private Gearbox gearbox;
@@ -126,6 +130,25 @@ public class Car {
             TimeUnit.MILLISECONDS.sleep(10);
         } catch (InterruptedException e) {
 
+        }
+    }
+
+
+    public void setPart(String type, Object part) {
+        switch (type) {
+            case "wheel":
+                setWheel((Wheel)part);
+                break;
+            case "bodywork":
+                setBodywork((Bodywork)part);
+                break;
+            case "gearbox":
+                setGearbox((Gearbox)part);
+                break;
+            case "engine":
+                setEngine((Engine)part);
+                break;
+            default:
         }
     }
 

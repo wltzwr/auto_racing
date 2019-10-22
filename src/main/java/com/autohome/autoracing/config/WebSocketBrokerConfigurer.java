@@ -1,6 +1,6 @@
 package com.autohome.autoracing.config;
 
-import com.autohome.autoracing.beans.PrincipalChannelInterceptor;
+import com.autohome.autoracing.interceptor.PrincipalChannelInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.ChannelRegistration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -13,7 +13,7 @@ public class WebSocketBrokerConfigurer implements WebSocketMessageBrokerConfigur
     @Override
     public void registerStompEndpoints(StompEndpointRegistry stompEndpointRegistry) {
         // 添加连接端点（和订阅路径无关） 并指定使用SockJS协议
-        stompEndpointRegistry.addEndpoint("socketEndpoint").addInterceptors(null)
+        stompEndpointRegistry.addEndpoint("socketEndpoint")
                 .setAllowedOrigins("*")
                 .withSockJS();
     }

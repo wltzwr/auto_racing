@@ -19,7 +19,7 @@ public class PartsFactory implements ResourceLoaderAware {
         return new JSONObject(partsJson);
     }
 
-    public Object getPart(String type, Integer id){
+    public JSONObject getPart(String type, Integer id){
         JSONArray array = partsJson.getJSONArray(type);
         for (int i = 0; i < array.size(); i++) {
             JSONObject part = array.getJSONObject(i);
@@ -29,6 +29,13 @@ public class PartsFactory implements ResourceLoaderAware {
         }
         return null;
     }
+
+
+    public <T> T getPart(String type, Integer id, Class<T> clazz){
+        JSONObject part = getPart(type, id);
+        return part != null ? part.toJavaObject(clazz) : null;
+    }
+
 
 
     @Override

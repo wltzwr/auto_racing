@@ -1,5 +1,5 @@
 {
-  "wheels": [
+  "wheel": [
     {
       "id": 1,
       "name": "米其林",
@@ -31,7 +31,7 @@
       "traction": 0.99
     }
   ],
-  "engines": [
+  "engine": [
     {
       "id": 1,
       "name": "2.0T",
@@ -97,7 +97,7 @@
       "speed": 7000
     }
   ],
-  "gearboxes": [
+  "gearbox": [
     {
       "id": 1,
       "name": "7DSG",
@@ -163,7 +163,7 @@
       "shiftTime": 100
     }
   ],
-  "shafts": [
+  "shaft": [
     {
       "id": 1,
       "name": "托森差速器",
@@ -177,7 +177,7 @@
       "efficiency": 0.85
     }
   ],
-  "bodyworks": [
+  "bodywork": [
     {
       "id": 1,
       "name": "兰博基尼埃文塔多",
